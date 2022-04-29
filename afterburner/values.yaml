@@ -41,7 +41,7 @@ service:
   port: 8080
 
 ingress:
-  enabled: true
+  enabled: false
   annotations:
     kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: "letsencrypt-staging"
@@ -54,6 +54,28 @@ ingress:
     - hosts:
         - afterburner.perfana.cloud
       secretName: afterburner-tls
+env:
+  "spring.application.name": "optimus-prime-fe"
+  "spring.profiles.active": "employee-db"
+  "afterburner.name": "optimus-prime-fe"
+  "management.metrics.tags.system_under_test": "OptimusPrime"
+  "management.metrics.tags.test_environment": "acc"
+  "management.metrics.tags.service": "optimus-prime-fe"
+  "afterburner.remote.call.base_url": "http://optimus-prime-be:8080"
+  "afterburner.remote.call.httpclient.socket.timeout.millis": "10000"
+  "JAVA_OPTS" : "-Xmx312m"
+  "spring.zipkin.enabled": "true"
+  "spring.zipkin.base-url": "http://jaeger-collector:9411/"
+  "spring.sleuth.sampler.probability": "0.1"
+  "spring.sleuth.keys.http.headers": "perfana-test-run-id,perfana-request-name"
+  "spring.sleuth.propagation.tag.enabled": "true"
+  "spring.sleuth.propagation.tag.whitelisted-keys": "perfana-test-run-id,perfana-request-name"
+  "spring.sleuth.propagation-keys": "perfana-test-run-id,perfana-request-name"
+  "spring.sleuth.baggage-keys": "perfana-test-run-id,perfana-request-name"
+  "afterburner.mybatis.datasource.url": "jdbc:mysql://afterburner-db:3306/employees"
+  "afterburner.mybatis.datasource.username": "afterburner"
+  "afterburner.mybatis.datasource.password": "sup3rs3cr3t"
+  "afterburner.mybatis.datasource.driver-class-name": "org.mysql.jdbc.Driver"
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
