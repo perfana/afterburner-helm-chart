@@ -2,7 +2,7 @@
 
 To deploy afterburner in a kubernetes cluster.
 
-Base on https://tanzu.vmware.com/developer/guides/deploy-spring-boot-application-production-helm/
+Based on https://jhooq.com/building-first-helm-chart-with-spring-boot/
 
 ## Usage
 
