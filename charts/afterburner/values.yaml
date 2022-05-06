@@ -42,18 +42,13 @@ service:
 
 ingress:
   enabled: false
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    cert-manager.io/cluster-issuer: "letsencrypt-staging"
-  hosts:
-    - host: afterburner.perfana.cloud
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
-  tls:
-    - hosts:
-        - afterburner.perfana.cloud
-      secretName: afterburner-tls
+  #annotations:
+  #  kubernetes.io/ingress.class: nginx
+  #hosts:
+  #  - host: <REPLACE WITH HOST>
+  #    paths:
+  #      - path: /
+  #        pathType: ImplementationSpecific
 env:
   "spring.application.name": "optimus-prime-fe"
   "spring.profiles.active": "employee-db"
@@ -72,10 +67,10 @@ env:
   "spring.sleuth.propagation.tag.whitelisted-keys": "perfana-test-run-id,perfana-request-name"
   "spring.sleuth.propagation-keys": "perfana-test-run-id,perfana-request-name"
   "spring.sleuth.baggage-keys": "perfana-test-run-id,perfana-request-name"
-  "afterburner.mybatis.datasource.url": "jdbc:mysql://afterburner-db:3306/employees"
-  "afterburner.mybatis.datasource.username": "afterburner"
-  "afterburner.mybatis.datasource.password": "sup3rs3cr3t"
-  "afterburner.mybatis.datasource.driver-class-name": "org.mysql.jdbc.Driver"
+  "afterburner.datasource.employee.jdbc-url": "jdbc:mysql://afterburner-db-mysql-headless:3306/employees"
+  "afterburner.datasource.employee.username": "username"
+  "afterburner.datasource.employee.password": "p4ssw0rd"
+  "afterburner.datasource.employee.driver-class-name": "com.mysql.cj.jdbc.Driver"
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
