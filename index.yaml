@@ -2,6 +2,16 @@ apiVersion: v1
 entries:
   afterburner:
   - apiVersion: v2
+    appVersion: 2.3.0
+    created: "2023-11-23T12:22:49.568697943Z"
+    description: A Helm chart for Kubernetes
+    digest: 5e46e0739e841dd09ef01930bdc1cca794ee6b632a7928446ac71b456cb35f7c
+    name: afterburner
+    type: application
+    urls:
+    - https://github.com/perfana/afterburner-helm-chart/releases/download/afterburner-0.1.4/afterburner-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
     appVersion: 2.2.0-jdk11
     created: "2023-02-03T12:20:26.620547537Z"
     description: A Helm chart for Kubernetes
@@ -41,4 +51,4 @@ entries:
     urls:
     - https://github.com/perfana/afterburner-helm-chart/releases/download/afterburner-0.1.0/afterburner-0.1.0.tgz
     version: 0.1.0
-generated: "2023-02-03T12:20:26.620564637Z"
+generated: "2023-11-23T12:22:49.568719012Z"
