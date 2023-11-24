@@ -95,4 +95,28 @@ nodeSelector: {}
 
 tolerations: []
 
+
 affinity: {}
+
+afterburner:
+  deployment:
+    livenessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /actuator/health/liveness
+        port: 8080
+        scheme: HTTP
+      initialDelaySeconds: 30
+      periodSeconds: 10
+      timeoutSeconds: 5
+      successThreshold: 1
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /actuator/health/readiness
+        port: 8080
+        scheme: HTTP
+      initialDelaySeconds: 30
+      periodSeconds: 10
+      timeoutSeconds: 5
+      successThreshold: 1

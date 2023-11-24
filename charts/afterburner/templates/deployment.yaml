@@ -43,19 +43,23 @@ spec:
               containerPort: 8080
               protocol: TCP
           livenessProbe:
-            failureThreshold: 3
+            failureThreshold: {{ .Values.afterburner.deployment.livenessProbe.failureThreshold }}
             httpGet:
-              path: /actuator/health/liveness
-              port: http
-              scheme: HTTP
-            initialDelaySeconds: 30
-            periodSeconds: 10
-            successThreshold: 1
-            timeoutSeconds: 5
+              path: {{ .Values.afterburner.deployment.livenessProbe.httpGet.path }}
+              port: {{ .Values.afterburner.deployment.livenessProbe.httpGet.port }}
+              scheme: {{ .Values.afterburner.deployment.livenessProbe.httpGet.scheme }}
+            initialDelaySeconds: {{ .Values.afterburner.deployment.livenessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.afterburner.deployment.livenessProbe.periodSeconds }}
+            timeoutSeconds: {{ .Values.afterburner.deployment.livenessProbe.timeoutSeconds }}
           readinessProbe:
+            failureThreshold: {{ .Values.afterburner.deployment.readinessProbe.failureThreshold }}
             httpGet:
-              path: /actuator/health/readiness
-              port: http
+              path: {{ .Values.afterburner.deployment.readinessProbe.httpGet.path }}
+              port: {{ .Values.afterburner.deployment.readinessProbe.httpGet.port }}
+              scheme: {{ .Values.afterburner.deployment.readinessProbe.httpGet.scheme }}
+            initialDelaySeconds: {{ .Values.afterburner.deployment.readinessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.afterburner.deployment.readinessProbe.periodSeconds }}
+            timeoutSeconds: {{ .Values.afterburner.deployment.readinessProbe.timeoutSeconds }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
